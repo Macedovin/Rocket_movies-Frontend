@@ -9,7 +9,7 @@ import { Rating } from '../../components/Rating';
 
 import { Tag } from '../../components/Tag'; 
 
-export function Details() {
+export function MovieDetails() {
   return(
     <Container>
       <Header />

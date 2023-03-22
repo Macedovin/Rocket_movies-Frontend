@@ -64,8 +64,7 @@ export default createGlobalStyle`
     /* SCROLLBAR STYLE - Chrome and others a*/
     
     &::-webkit-scrollbar {
-      width: 2.2rem;
-
+      width: 0.8rem;
     }
     
     &::-webkit-scrollbar-track {
@@ -75,9 +74,8 @@ export default createGlobalStyle`
     &::-webkit-scrollbar-thumb {
       background: transparent;
       border-radius: 1rem;
-      border: solid .6rem transparent;
+      border: 1px solid transparent;
       box-shadow: inset 1rem 0 0 0 ${({ theme }) => theme.COLORS.PINK};
-      margin-bottom: 0 1.8rem;
     }
 }
 `;

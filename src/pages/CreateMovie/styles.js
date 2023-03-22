@@ -11,6 +11,7 @@ export const Container = styled.div`
     "content";
 
   > main {
+    grid-area: content;
 
     width: 113.7rem;
 
@@ -28,12 +29,19 @@ export const Container = styled.div`
 `;
 
 export const Form = styled.form`
-  max-width: 113.7rem;
+  max-width: 113.5rem;
   max-height: 79.1rem;
 
   margin: 2.4rem 0 4rem;
+  padding-right: 0.5rem;
 
   overflow-y: auto;
+
+  > h1 {
+    font-size: 3.6rem;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+  
+  }
 
   > .inputs {
     display: flex;
@@ -43,12 +51,6 @@ export const Form = styled.form`
     margin: 4rem 0;
   }
   
-  > h1 {
-    font-size: 3.6rem;
-    color: ${({ theme }) => theme.COLORS.WHITE};
-  
-  }
-
   .newTags {
     width: 100%;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};

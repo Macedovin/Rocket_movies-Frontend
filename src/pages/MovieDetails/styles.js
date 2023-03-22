@@ -14,10 +14,7 @@ export const Container = styled.div`
     grid-area: content;
 
     padding: 4rem 0 0;
-    
   }
-
-
 `;
 
 export const Content = styled.div`
@@ -45,6 +42,7 @@ export const MovieContent = styled.div`
   max-height: 58rem;
 
   margin: 2.4rem auto 0;
+  padding-right: 0.5rem;
 
   overflow-y: auto;
 
