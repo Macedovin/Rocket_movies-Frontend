@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -39,7 +41,7 @@ export const  AboutUserMovies = styled.div`
   }
 `;
 
-export const NewMovie =styled.button`
+export const NewMovie = styled(Link)`
 
   font-weight: 400;
 
@@ -53,7 +55,6 @@ export const NewMovie =styled.button`
 
   height: 4.8rem;
 
-  border: 0;
   border-radius: 1rem;
 
   padding: 0 3.2rem;

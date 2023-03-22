@@ -1,5 +1,7 @@
 import { Container, Form  } from './styles';
 
+import { Link } from 'react-router-dom';
+
 import { HiOutlineArrowLeft } from 'react-icons/hi'
 
 import { Header } from '../../components/Header';
@@ -21,10 +23,10 @@ export function CreateMovie() {
 
       <main>
         
-        <a href="/">
+        <Link to="/">
           <HiOutlineArrowLeft />
           Voltar
-        </a>
+        </Link>
         
         <Form>
 

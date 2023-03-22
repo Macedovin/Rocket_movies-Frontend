@@ -5,6 +5,8 @@ import { HiOutlineArrowLeft } from 'react-icons/hi';
 
 import { Header } from '../../components/Header';
 
+import { Link } from 'react-router-dom';
+
 import { Rating } from '../../components/Rating';
 
 import { Tag } from '../../components/Tag'; 
@@ -17,10 +19,10 @@ export function MovieDetails() {
       <main>
         <Content>
         
-          <a href="/">
+          <Link to="/">
             <HiOutlineArrowLeft />
             Voltar
-          </a>
+          </Link>
         
           <MovieContent>
                   

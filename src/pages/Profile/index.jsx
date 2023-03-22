@@ -1,7 +1,8 @@
 import { Container, Avatar, Form } from './styles';
 
-import { HiOutlineArrowLeft } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
+import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { FiCamera, FiUser, FiMail, FiLock } from 'react-icons/fi';
 
 import { Input } from '../../components/Input';
@@ -12,10 +13,10 @@ export function Profile() {
   return(
     <Container>
       <header>
-      <a href="/">
+      <Link to="/">
         <HiOutlineArrowLeft />
         Voltar
-      </a>
+      </Link>
       </header>
 
       <Form>
