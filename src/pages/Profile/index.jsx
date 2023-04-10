@@ -1,13 +1,13 @@
 import { Container, Avatar, Form } from './styles';
 
-import { Link } from 'react-router-dom';
+import { Input } from '../../components/Input';
+import { PasswordInput } from '../../components/PasswordInput';
+import { Button } from '../../components/Button';
 
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { FiCamera, FiUser, FiMail, FiLock } from 'react-icons/fi';
 
-import { Input } from '../../components/Input';
-
-import { Button } from '../../components/Button'
+import { Link } from 'react-router-dom';
 
 export function Profile() {
   return(
@@ -47,14 +47,13 @@ export function Profile() {
           placeholder="E-mail"
         />
 
-        <Input 
-          type="password"
+        
+        <PasswordInput 
           icon={FiLock}
           placeholder="Senha atual"
         />
 
-        <Input 
-          type="password"
+        <PasswordInput 
           icon={FiLock}
           placeholder="Nova senha"
         />

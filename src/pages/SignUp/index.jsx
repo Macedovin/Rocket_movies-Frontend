@@ -1,12 +1,15 @@
 import { Container, Form, Background } from './styles';
 
-import { Link } from 'react-router-dom';
+import { Input } from '../../components/Input';
+import { Button } from '../../components/Button';
+import { PasswordInput } from '../../components/PasswordInput';
 
 import { FiUser, FiMail, FiLock, FiArrowLeft } from 'react-icons/fi';
 
-import { Input } from '../../components/Input';
+import { Link } from 'react-router-dom';
 
-import { Button } from '../../components/Button';
+
+
  
 export function SignUp() {
   return (
@@ -37,10 +40,9 @@ export function SignUp() {
           placeholder="E-mail"
         />
 
-        <Input
-          type="password" 
-          icon={FiLock} 
-          placeholder="Senha"
+        <PasswordInput 
+                    icon={FiLock} 
+                    placeholder="Senha"
         />
 
         <Button title="Cadastrar" />
