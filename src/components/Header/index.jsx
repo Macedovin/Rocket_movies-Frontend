@@ -1,10 +1,14 @@
 import { Container, Brand, Search, Profile, Avatar } from './styles';
 
 import { Input } from '../Input';
-
 import { ButtonText } from '../ButtonText';
 
+import { useAuth } from '../../hooks/auth';
+
 export function Header() {
+
+  const { signOut } = useAuth();
+
   return (
     <Container>
       <Brand to="/">      
@@ -23,7 +27,10 @@ export function Header() {
           <strong>
               Vinicius Macedo
           </strong>
-          <ButtonText title="sair" />
+          <ButtonText 
+            title="sair"
+            onClick={signOut}
+          />
         </div>
 
         <Avatar to="/profile">
