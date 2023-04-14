@@ -22,7 +22,7 @@ export function SignIn() {
 
   function handleSignIn() {
     signIn({ email, password })
-  }
+  }  
 
   return (
     <Container>
@@ -54,7 +54,7 @@ export function SignIn() {
 
         <Button 
           title="Entrar"
-          onClick={handleSignIn} 
+          onClick={handleSignIn}
         />
 
         <Link to="/register">

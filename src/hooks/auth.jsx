@@ -15,7 +15,7 @@ function AuthProvider({ children }) {
       
       const { user, token } = response.data;
 
-      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       
       localStorage.setItem("@rocketmovies:user", JSON.stringify(user));
       localStorage.setItem("@rocketmovies:token", token);
@@ -38,13 +38,52 @@ function AuthProvider({ children }) {
     setData({});
   }
 
+  async function updateUserProfile({ user, avatarFile }) {
+
+    try {
+
+      if(avatarFile) {
+        const fileUploadForm = new FormData();
+  
+        fileUploadForm.append("avatar", avatarFile);
+        
+        const response = await api.patch('/users/avatar', fileUploadForm);
+
+        console.log("Avatar => ", user);
+
+        user.avatar = response.data.avatar
+
+      }
+
+      const response = await api.put('/users', user);
+
+      user = response.data.updatedUser; 
+      
+      localStorage.setItem("@rocketmovies:user", JSON.stringify(user));
+
+      console.log("Profile => ", user);
+      
+      setData({ user, token: data.token });
+      
+      alert("Perfil atualizado!")
+
+    } catch(error) {
+      if(error.response) {
+        alert(error.response.data.message)
+      } else {
+        alert("Não foi possível atualizar o perfil.")
+      }
+    } 
+  }
+  
+
   useEffect(() => {
 
     const user = localStorage.getItem("@rocketmovies:user");
     const token = localStorage.getItem("@rocketmovies:token");
 
     if(user && token) {
-      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
       setData({
         user: JSON.parse(user),
@@ -57,6 +96,7 @@ function AuthProvider({ children }) {
     <AuthContext.Provider value={{ 
         signIn,
         signOut,
+        updateUserProfile,
         user: data.user
       }}
     >

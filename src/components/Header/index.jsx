@@ -3,11 +3,17 @@ import { Container, Brand, Search, Profile, Avatar } from './styles';
 import { Input } from '../Input';
 import { ButtonText } from '../ButtonText';
 
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+
+import { api } from '../../services/api';
+
 import { useAuth } from '../../hooks/auth';
 
 export function Header() {
 
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
+
+  const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
   return (
     <Container>
@@ -25,7 +31,7 @@ export function Header() {
 
         <div>
           <strong>
-              Vinicius Macedo
+              {user.name}
           </strong>
           <ButtonText 
             title="sair"
@@ -34,7 +40,7 @@ export function Header() {
         </div>
 
         <Avatar to="/profile">
-          <img src="https://github.com/Macedovin.png" alt="Foto do usuário" />
+          <img src={avatarURL} alt="Foto do usuário" />
         </Avatar>
       
       </Profile>
