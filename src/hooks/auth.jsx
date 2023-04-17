@@ -49,8 +49,6 @@ function AuthProvider({ children }) {
         
         const response = await api.patch('/users/avatar', fileUploadForm);
 
-        console.log("Avatar => ", user);
-
         user.avatar = response.data.avatar
 
       }
@@ -60,8 +58,6 @@ function AuthProvider({ children }) {
       user = response.data.updatedUser; 
       
       localStorage.setItem("@rocketmovies:user", JSON.stringify(user));
-
-      console.log("Profile => ", user);
       
       setData({ user, token: data.token });
       
