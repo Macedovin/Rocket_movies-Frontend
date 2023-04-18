@@ -21,7 +21,6 @@ export function CreateMovie() {
   const [score, setScore] = useState("");
   const [description, setDescription] = useState("");
 
-
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
 
@@ -48,8 +47,19 @@ export function CreateMovie() {
     setTags(prevState => prevState.filter(tag => tag !== deleted));
   }
 
-  async function handleNewMovie() {
+  function handleDiscardInformation() {
 
+    const userConfirmExclusion = window.confirm("Ao prosseguir os dados inseridos serão perdidos. Deseja continuar?")
+
+    if(userConfirmExclusion) {
+
+      navigate("/")
+    } 
+
+  }
+
+  async function handleNewMovie() {
+ 
     if(!title) {
       alert("Digite o título do filme.")
     }
@@ -57,27 +67,39 @@ export function CreateMovie() {
     if(newTag) {
       alert("Você deixou um marcador no campo para a adicionar, mas não adicionou. Clique para adicionar ou deixe o campo vazio.")
     }
+    
+    const userConfirmSave = window.confirm(`
+    Este filme esta sendo cadastrado!
 
-    try {
+    Você pode confirmar o cadastro, clicando em "OK", ou continuar editando os dados, ao cancelar!`
+    );
+    
+    if (userConfirmSave) {
 
-      await api.post('/movie_notes', {
-        title,
-        score, 
-        description,
-        tags,
-      });
-  
-      alert("Filme cadastrado com sucesso!");
-  
-      navigate("/");
+      try {
 
-    } catch (error) {
-      if(error.response) {
-        alert(error.response.data.message)
-      } else {
-        alert("Não foi possível cadastrar o filme.")
+        const response = await api.post('/movie_notes', {
+          title,
+          score, 
+          description,
+          tags,
+        });
+
+        alert("Filme cadastrado com sucesso!")
+
+        navigate("/");
+
+      } catch (error) {
+
+        if(error.response) {
+          alert(error.response.data.message)
+        } else {
+          alert("Não foi possível cadastrar o filme.")
+        }
+
       }
-    }
+      
+    } 
   }
 
   return (
@@ -145,12 +167,13 @@ export function CreateMovie() {
             <div className="buttons">
 
               <Button 
-                title="Excluir filme"
                 isExclude 
+                title="Excluir filme"
+                onClick={handleDiscardInformation}
               />
               <Button 
                 title="Salvar alterações" 
-                onClick={handleNewMovie}
+                onClick={handleNewMovie} 
               />
             </div>
           </Form>

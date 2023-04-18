@@ -1,15 +1,13 @@
 import { Container, Content, MovieContent, MovieInfos, UserInfos } from './styles';
 
+import { Header } from '../../components/Header';
+import { Rating } from '../../components/Rating';
+import { Tag } from '../../components/Tag'; 
+
 import { CiClock2 } from 'react-icons/ci';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 
-import { Header } from '../../components/Header';
-
 import { Link } from 'react-router-dom';
-
-import { Rating } from '../../components/Rating';
-
-import { Tag } from '../../components/Tag'; 
 
 export function MovieDetails() {
   return(

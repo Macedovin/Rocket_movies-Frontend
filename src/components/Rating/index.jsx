@@ -1,8 +1,8 @@
 import { Container, Stars } from './styles';
 
 import { FiStar } from 'react-icons/fi';
-
 import { FiStarFull } from '../FiStarFull';
+
 
 export function Rating({ data, ...rest }) {
   const stars = [...Array(5)];
@@ -33,7 +33,6 @@ export function Rating({ data, ...rest }) {
                   {data.score < ratingValue ? <FiStar /> : <FiStarFull /> }
               </label>
 
-              
             )
           })
         }

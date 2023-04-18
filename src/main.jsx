@@ -8,6 +8,7 @@ import GlobalStyles from './styles/global';
 import theme from './styles/theme';
 
 import { AuthProvider } from './hooks/auth';
+import { DataProvider } from './hooks/data';
 
 import { Routes } from './routes';
 
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AuthProvider>
-        <Routes />
+        <DataProvider>
+          <Routes />
+        </DataProvider>'
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,

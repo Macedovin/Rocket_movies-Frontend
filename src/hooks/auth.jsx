@@ -70,8 +70,7 @@ function AuthProvider({ children }) {
         alert("Não foi possível atualizar o perfil.")
       }
     } 
-  }
-  
+  }    
 
   useEffect(() => {
 
@@ -93,7 +92,7 @@ function AuthProvider({ children }) {
         signIn,
         signOut,
         updateUserProfile,
-        user: data.user
+        user: data.user,
       }}
     >
       {children}

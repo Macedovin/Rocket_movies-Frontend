@@ -1,12 +1,16 @@
 import { Container, Content, AboutUserMovies, NewMovie, Cards } from './styles';
 
-import { FiPlus } from 'react-icons/fi'; 
-
 import { Header } from '../../components/Header';
-
 import { MovieCard } from '../../components/MovieCard';
 
-export function Home() {
+import { FiPlus } from 'react-icons/fi'; 
+
+import { useData } from '../../hooks/data';
+
+export function Home({}) {
+
+  const { movies, setMovies } = useData();
+
   return (
     <Container>
      <Header />
@@ -28,64 +32,22 @@ export function Home() {
           </AboutUserMovies>
 
           <Cards>
+            {
+              movies && movies.map(movie => (
 
-            <MovieCard 
-              title="Interstellar"
-              score={4}
-              data={
-                {
-                  tags: [
-                    {id: 1, name: "Ficção científica"},
-                    {id: 2, name: "Drama"},
-                    {id: 3, name: "Família"}
-                  ],
-            
-                }
-              }
-            />
-            <MovieCard 
-              title= "Interstellar"
-              score={4}
-              data={
-                {
-                  
-                  tags: [
-                    {id: 1, name: "Ficção científica"},
-                    {id: 2, name: "Drama"},
-                    {id: 3, name: "Família"}
-                  ]
-                }
-              }
-            />
-            <MovieCard 
-              title= "Interstellar"
-              score={4}
-              data={
-                {
-
-                  tags: [
-                    {id: 1, name: "Ficção científica"},
-                    {id: 2, name: "Drama"},
-                    {id: 3, name: "Família"}
-                  ]
-                }
-              }
-            />
-
-<MovieCard 
-              title= "Interstellar"
-              score={4}
-              data={
-                {
-
-                  tags: [
-                    {id: 1, name: "Ficção científica"},
-                    {id: 2, name: "Drama"},
-                    {id: 3, name: "Família"}
-                  ]
-                }
-              }
-            />
+                <MovieCard 
+                  key={String(movie.id)}
+                  title={movie.title}
+                  score={movie.score}
+                  data={
+                    {
+                      description: movie.description,
+                      tags: movie.tags,
+                    }
+                  }
+                />
+              ))
+            }
           </Cards>
         </Content>
       </main>

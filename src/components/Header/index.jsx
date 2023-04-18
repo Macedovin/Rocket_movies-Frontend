@@ -7,13 +7,26 @@ import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
 
 import { api } from '../../services/api';
 
+import { useEffect, useState } from 'react';
+
 import { useAuth } from '../../hooks/auth';
+import { useData } from '../../hooks/data';
 
 export function Header() {
-
+  
   const { user, signOut } = useAuth();
+  
+  const { fetchMovies } = useData()
+
+  const [search, setSearch] = useState("");
 
   const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
+  useEffect(() => {
+
+    fetchMovies(search);
+    
+  },[search]); 
 
   return (
     <Container>
@@ -24,6 +37,7 @@ export function Header() {
       <Search>
         <Input 
           placeholder="Pesquisar pelo título"
+          onChange={e => setSearch(e.target.value)}
         />
       </Search>
 
