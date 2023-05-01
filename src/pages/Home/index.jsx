@@ -5,15 +5,51 @@ import { MovieCard } from '../../components/MovieCard';
 
 import { FiPlus } from 'react-icons/fi'; 
 
-import { useData } from '../../hooks/data';
+import { api } from '../../services/api'; 
+
+import { useNavigate } from 'react-router-dom';
+
+import { useState, useEffect } from 'react';
+
+/* import { useData } from '../../hooks/data'; */
 
 export function Home({}) {
 
-  const { movies, setMovies } = useData();
+  const [search, setSearch] = useState("");
+
+  const [movies, setMovies] = useState([]);
+
+  /* const { movies } = useData(); */
+
+  const navigate = useNavigate();
+
+  function handleMovieDetails(id) {
+
+    navigate(`/movie_details/${id}`);
+  
+  }
+
+  useEffect(() => {
+    
+    async function fetchMovies() {
+
+      const response = await api.get(`/movie_notes?title=${search}`);
+      
+      setMovies(response.data);
+
+      console.log(response.data);
+
+    }
+    
+    fetchMovies();
+
+  },[search])
 
   return (
     <Container>
-     <Header />
+      <Header 
+        onChange={e => setSearch(e.target.value)}
+      />
       
       <main>
         <Content>
@@ -45,6 +81,7 @@ export function Home({}) {
                       tags: movie.tags,
                     }
                   }
+                  onClick={() => handleMovieDetails(movie.id)}
                 />
               ))
             }

@@ -47,6 +47,7 @@ export const MovieContent = styled.div`
   overflow-y: auto;
 
   > p {
+    white-space: pre-line;
     font-weight: 400;
     text-align:justify;
     

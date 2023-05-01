@@ -8,7 +8,7 @@ import GlobalStyles from './styles/global';
 import theme from './styles/theme';
 
 import { AuthProvider } from './hooks/auth';
-import { DataProvider } from './hooks/data';
+import { DebounceProvider } from './hooks/debounce';
 
 import { Routes } from './routes';
 
@@ -17,9 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AuthProvider>
-        <DataProvider>
+        <DebounceProvider>
           <Routes />
-        </DataProvider>'
+        </DebounceProvider>
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,

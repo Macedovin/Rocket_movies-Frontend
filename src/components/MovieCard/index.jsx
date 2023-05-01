@@ -3,11 +3,8 @@ import { Container, Ellipsis } from './styles';
 import { Rating } from '../Rating';
 import { Tag } from '../Tag';
 
-import { Link } from 'react-router-dom';
-
 export function MovieCard({ data, title, score, ...rest }) {
   return(
-    <Link to="/movie_details/1">
     
       <Container {...rest}>
 
@@ -30,7 +27,5 @@ export function MovieCard({ data, title, score, ...rest }) {
         }
 
       </Container>
-    
-    </Link>
   );
 }
